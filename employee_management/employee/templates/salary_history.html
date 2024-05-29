@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary History</title>
+</head>
+<body>
+    <h1>Salary History for {{ employee.first_name }} {{ employee.last_name }}</h1>
+    <table border="2" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Pay Date</th>
+                <th>Basic Salary</th>
+                <th>Allowances</th>
+                <th>Deductions</th>
+                <th>Bonuses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in salary_history %}
+                <tr>
+                    <td>{{ record.pay_date }}</td>
+                    <td>{{ record.basic_salary }}</td>
+                    <td>{{ record.allowances }}</td>
+                    <td>{{ record.deductions }}</td>
+                    <td>{{ record.bonuses }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

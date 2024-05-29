@@ -1,0 +1,76 @@
+<!-- templates/employee_leave_attendance.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Leave and Attendance</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Leave and Attendance</h1>
+
+    <h2>Employee Details</h2>
+    <p><strong>Name:</strong> {{ employee.first_name }} {{ employee.last_name }}</p>
+    <p><strong>Department:</strong> {{ employee.department.name }}</p>
+
+    <h3>Leave Records</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Leave Type</th>
+                <th>Leave Balance</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Approval Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leave in leave_records %}
+            <tr>
+                <td>{{ leave.leave_type }}</td>
+                <td>{{ leave.leave_balance }}</td>
+                <td>{{ leave.leave_start_date }}</td>
+                <td>{{ leave.leave_end_date }}</td>
+                <td>{{ leave.approval_status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Attendance Records</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Clock In</th>
+                <th>Clock Out</th>
+                <th>Work Hours</th>
+                <th>Overtime</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendance_records %}
+            <tr>
+                <td>{{ attendance.date }}</td>
+                <td>{{ attendance.clock_in }}</td>
+                <td>{{ attendance.clock_out }}</td>
+                <td>{{ attendance.work_hours }}</td>
+                <td>{{ attendance.overtime }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

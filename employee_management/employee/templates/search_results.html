@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+{% if employees %}
+    <table class="table table-striped">
+        <thead>
+            <tr>    
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Basic Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                <td>{{ employee.department.name }}</td>
+                <td>${{ employee.payrolls.last.basic_salary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No employees found matching the given ID.</p>
+{% endif %}
+{% endblock %}
+
+<a href="{% url 'employee_leave_attendance' employee.id %}">View Leave and Attendance</a>

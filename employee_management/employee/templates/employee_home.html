@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Employee Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the Employee Management System</h1>
+    <p class="lead">This is the home page for employees.</p>
+    <hr class="my-4">
+    <form method="get" action="{% url 'search_employee_by_id' %}" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search employee by ID" aria-label="Search" name="id">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <h2>Departments</h2>
+    <ul class="list-group">
+        {% for department in departments %}
+        <li class="list-group-item">
+            <a href="{% url 'employees_in_department' department.name %}">{{ department.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="mt-4">Recent Payrolls</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Department</th>
+                <th>Pay Date</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payroll in recent_payrolls %}
+            <tr>
+                <td>{{ payroll.employee.first_name }} {{payroll.employee.last_name }}</td>
+                <td>{{ payroll.employee.department.name }}</td>
+                <td>{{ payroll.pay_date }}</td>
+                <td>${{ payroll.basic_salary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'all_employees' %}" class="btn btn-primary mt-3">Show All Employees</a>
+</div>
+{% endblock %}

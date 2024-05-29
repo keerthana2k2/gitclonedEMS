@@ -1,0 +1,32 @@
+<!-- all_employees.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Employees</title>
+</head>
+<body>
+    <h1>All Employees</h1>
+    <table class="table table-striped" style="height: 15rem; width: 30rem; border-collapse: collapse;" border="2">
+        <thead style="background-color:aquamarine;">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Basic Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr style="text-align: center;">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                    <td>{{ employee.department.name }}</td>
+                    <td>${{ employee.payrolls.first.basic_salary }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</body>
+</html>

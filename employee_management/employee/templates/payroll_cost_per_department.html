@@ -1,0 +1,26 @@
+<!-- payroll_cost_per_department.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payroll Cost per Department</title>
+</head>
+<body>
+    <h1>Payroll Cost per Department</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Payroll Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department, payroll in department_payrolls.items %}
+                <tr>
+                    <td>{{ department }}</td>
+                    <td>{{ payroll }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
